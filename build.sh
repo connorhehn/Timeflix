@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set variables
-EXTENSION_NAME="video-time-tracker"
+EXTENSION_NAME="Timeflix"
 BUILD_DIR="build"
 ZIP_FILE="$EXTENSION_NAME.zip"
 
