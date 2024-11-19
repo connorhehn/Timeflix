@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Video Time Tracker",
+    "description": "Calculate and display video remaining time based on current playback speed.",
+    "version": "1.0",
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
+    "host_permissions": [
+        "*://*/*"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "icon.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ]
+}
