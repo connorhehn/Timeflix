@@ -62,3 +62,30 @@ body {
   button:hover {
     background: #0056b3;
   }
+
+/* Add spinning animation with smooth and equal pauses */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  45% {
+    transform: rotate(180deg);
+  }
+  55% {
+    transform: rotate(180deg); /* Pause at 180° */
+  }
+  90% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(360deg); /* Pause at 360° */
+  }
+}
+
+/* Apply animation to the clock icon */
+.icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+  animation: spin 8s linear infinite; /* 8 seconds for smooth spinning and equal pauses */
+}
