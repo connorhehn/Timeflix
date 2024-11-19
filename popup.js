@@ -2,19 +2,33 @@ document.getElementById('refresh').addEventListener('click', () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       chrome.scripting.executeScript({
         target: { tabId: tabs[0].id },
-        function: getVideoRemainingTime,
+        function: calculateVideoTimes,
+      }, (results) => {
+        if (results && results[0] && results[0].result) {
+          const { remainingTime, finishTime } = results[0].result;
+          document.getElementById('remaining-time').textContent = `Remaining Time: ${remainingTime}`;
+          document.getElementById('finish-time').textContent = `Finish Time: ${finishTime}`;
+        }
       });
     });
   });
 
-  function getVideoRemainingTime() {
+  function calculateVideoTimes() {
     const video = document.querySelector('video');
     if (video) {
       const playbackRate = video.playbackRate;
       const remainingTime = (video.duration - video.currentTime) / playbackRate;
-      alert(`Remaining Time: ${formatTime(remainingTime)}`);
+      const finishTime = new Date(Date.now() + remainingTime * 1000);
+
+      return {
+        remainingTime: formatTime(remainingTime),
+        finishTime: finishTime.toLocaleTimeString(),
+      };
     } else {
-      alert('No video found on this page.');
+      return {
+        remainingTime: '--',
+        finishTime: '--',
+      };
     }
 
     function formatTime(seconds) {

@@ -5,9 +5,13 @@
   <title>Video Time Tracker</title>
 </head>
 <body>
-  <div class="popup">
+  <div class="popup-card">
     <h2>Video Time Tracker</h2>
-    <p id="info">Open a video to see the remaining time.</p>
+    <div class="info">
+      <img src="assets/clock.png" alt="Clock Icon" class="icon">
+      <p id="remaining-time">Remaining Time: <span>--</span></p>
+      <p id="finish-time">Finish Time: <span>--</span></p>
+    </div>
     <button id="refresh">Refresh</button>
   </div>
   <script src="popup.js"></script>
