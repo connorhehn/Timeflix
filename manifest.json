@@ -7,21 +7,8 @@
         "activeTab",
         "scripting"
     ],
-    "host_permissions": [
-        "*://*/*"
-    ],
     "action": {
         "default_popup": "popup.html",
         "default_icon": "assets/icon.png"
-    },
-    "content_scripts": [
-        {
-            "matches": [
-                "*://*/*"
-            ],
-            "js": [
-                "content.js"
-            ]
-        }
-    ]
+    }
 }
