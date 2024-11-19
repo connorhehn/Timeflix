@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Video Time Tracker",
+    "name": "Timeflix",
     "description": "Calculate and display video remaining time based on current playback speed.",
     "version": "1.0",
     "permissions": [
