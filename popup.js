@@ -61,3 +61,26 @@ document.getElementById('refresh').addEventListener('click', () => {
     });
   });
 });
+
+
+// Update speed slider value
+document.getElementById('speed-slider').addEventListener('input', (event) => {
+  const speed = parseFloat(event.target.value);
+  document.getElementById('speed-display').textContent = `${speed.toFixed(2)}x`;
+
+  // Apply speed change to the active video
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    chrome.scripting.executeScript({
+      target: { tabId: tabs[0].id },
+      func: (newSpeed) => {
+        const video = document.querySelector('video');
+        if (video) {
+          video.playbackRate = newSpeed;
+        } else {
+          alert('No video detected on this page.');
+        }
+      },
+      args: [speed]
+    });
+  });
+});

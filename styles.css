@@ -63,6 +63,25 @@ body {
     background: #0056b3;
   }
 
+/* Speed control styles */
+.controls {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#speed-slider {
+  width: 80%;
+  margin: 10px auto;
+  display: block;
+}
+
+#speed-display {
+  display: inline-block;
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
 /* Add spinning animation with smooth and equal pauses */
 @keyframes spin {
   0% {
