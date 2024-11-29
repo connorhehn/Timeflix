@@ -24,8 +24,8 @@ function calculateVideoTimes() {
   }
 }
 
-// Automatically fetch video times when the popup opens
-document.addEventListener('DOMContentLoaded', () => {
+// Function to update video times in the popup
+function updateVideoTimes() {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     chrome.scripting.executeScript({
       target: { tabId: tabs[0].id },
@@ -33,31 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }, (results) => {
       if (results && results[0] && results[0].result) {
         const { remainingTime, finishTime } = results[0].result;
-        document.getElementById('remaining-time').textContent = `Remaining Time: ${remainingTime}`;
-        document.getElementById('finish-time').textContent = `Finish Time: ${finishTime}`;
+        document.getElementById('remaining-time').textContent = `Time Left: ${remainingTime}`;
+        document.getElementById('finish-time').textContent = `Finish By: ${finishTime}`;
       } else {
         document.getElementById('remaining-time').textContent = 'No video detected';
         document.getElementById('finish-time').textContent = '--';
       }
     });
   });
-});
+}
 
-// Add refresh button functionality for manual updates
-document.getElementById('refresh').addEventListener('click', () => {
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    chrome.scripting.executeScript({
-      target: { tabId: tabs[0].id },
-      function: calculateVideoTimes,
-    }, (results) => {
-      if (results && results[0] && results[0].result) {
-        const { remainingTime, finishTime } = results[0].result;
-        document.getElementById('remaining-time').textContent = `Remaining Time: ${remainingTime}`;
-        document.getElementById('finish-time').textContent = `Finish Time: ${finishTime}`;
-      } else {
-        document.getElementById('remaining-time').textContent = 'No video detected';
-        document.getElementById('finish-time').textContent = '--';
-      }
-    });
-  });
+// Automatically update every second
+document.addEventListener('DOMContentLoaded', () => {
+  updateVideoTimes();
+  setInterval(updateVideoTimes, 1000); // Refresh every second
 });

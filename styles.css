@@ -1,91 +1,69 @@
 /* General styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-  }
-
-  /* Popup card container */
-  .popup-card {
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    width: 280px;
-  }
-
-  .popup-card h2 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 15px;
-  }
-
-  .info {
-    margin-bottom: 20px;
-  }
-
-  .info p {
-    font-size: 1rem;
-    color: #555;
-    margin: 5px 0;
-  }
-
-  .info span {
-    font-weight: bold;
-    color: #000;
-  }
-
-  .icon {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 10px;
-  }
-
-  /* Button styles */
-  button {
-    padding: 10px 15px;
-    font-size: 1rem;
-    color: #fff;
-    background: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-
-  button:hover {
-    background: #0056b3;
-  }
-
-/* Add spinning animation with smooth and equal pauses */
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  45% {
-    transform: rotate(180deg);
-  }
-  55% {
-    transform: rotate(180deg); /* Pause at 180° */
-  }
-  90% {
-    transform: rotate(360deg);
-  }
-  100% {
-    transform: rotate(360deg); /* Pause at 360° */
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
 }
 
-/* Apply animation to the clock icon */
+/* Popup card container */
+.popup-card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  width: 280px;
+}
+
+.popup-card h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.info {
+  margin-bottom: 20px;
+}
+
+.info p {
+  font-size: 1rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+.info span {
+  font-weight: bold;
+  color: #000;
+}
+
+/* Hourglass icon styles */
 .icon {
   width: 40px;
   height: 40px;
   margin-bottom: 10px;
-  animation: spin 8s linear infinite; /* 8 seconds for smooth spinning and equal pauses */
+  animation: spin 10s linear infinite; /* 10-second animation cycle */
+}
+
+/* Smooth and consistent spinning animation */
+@keyframes spin {
+  0% {
+      transform: rotate(0deg); /* Pause at start */
+  }
+  20% {
+      transform: rotate(0deg); /* Still paused at start */
+  }
+  50% {
+      transform: rotate(180deg); /* Smooth spin to 180 degrees */
+  }
+  70% {
+      transform: rotate(180deg); /* Pause at 180 degrees */
+  }
+  100% {
+      transform: rotate(360deg); /* Smooth spin to 360 degrees */
+  }
 }
